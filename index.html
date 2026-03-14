@@ -26,6 +26,25 @@
       color: var(--text);
       font-family: 'Nunito', sans-serif;
       overflow-x: hidden;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 0 3px rgba(0,245,255,0.15), 0 0 60px rgba(0,245,255,0.05) inset;
+    }
+
+    /* Outer neon border frame */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 4px;
+      border: 1px solid rgba(0,245,255,0.08);
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 9999;
+      box-shadow:
+        0 0 30px rgba(0,245,255,0.04) inset,
+        0 0 1px rgba(0,245,255,0.3),
+        /* corner accents via box-shadow can't do it, using outline instead */
+        inset 0 0 80px rgba(57,255,20,0.02);
     }
 
     body::before {
@@ -33,13 +52,27 @@
       position: fixed;
       inset: 0;
       background-image:
+        /* subtle grid lines */
+        linear-gradient(rgba(0,245,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,0.025) 1px, transparent 1px),
+        /* corner atmospheric glows */
+        radial-gradient(ellipse at 0% 0%, rgba(0,245,255,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 0%, rgba(57,255,20,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,45,120,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 0% 100%, rgba(255,95,31,0.06) 0%, transparent 50%),
+        /* stars */
         radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
         radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
         radial-gradient(1px 1px at 55% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
         radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
         radial-gradient(1px 1px at 85% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
         radial-gradient(1.5px 1.5px at 20% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 92% 10%, rgba(255,255,255,0.4) 0%, transparent 100%);
+        radial-gradient(1.5px 1.5px at 92% 10%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 30%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.2) 0%, transparent 100%);
+      background-size: 60px 60px, 60px 60px, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
+        auto, auto, auto, auto, auto, auto, auto, auto, auto, auto;
       pointer-events: none;
       z-index: 0;
     }
@@ -207,12 +240,13 @@
     .reu-list { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .reu-card {
-      background: var(--card); border: 1px solid rgba(57,255,20,0.15);   <!-- change background color -->
+      background: var(--card); border: 1px solid rgba(255,95,31,0.2);
       border-left: 4px solid var(--neon-orange); border-radius: 12px;
       padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s;
       display: flex; align-items: flex-start; gap: 1rem;
+      box-shadow: inset 0 0 30px rgba(255,95,31,0.05), 0 0 0 0 transparent;
     }
-    .reu-card:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(57,255,20,0.2); }
+    .reu-card:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(255,95,31,0.3), inset 0 0 40px rgba(255,95,31,0.08); }
     .reu-icon { width: 1.4rem; height: 1.4rem; flex-shrink: 0; color: var(--neon-orange); margin-top: 0.2rem; }
     .reu-title { font-weight: 800; font-size: 1.05rem; color: var(--neon-orange); margin-bottom: 0.25rem; }
     .reu-year { font-size: 0.95rem; color: var(--text); margin-bottom: 0.25rem; }
@@ -383,7 +417,10 @@
 
       <div class="project-card reveal">
         <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+          <!-- Shield (battle/armor) icon for BattleBots -->
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <line x1="9" y1="12" x2="15" y2="12"/>
+          <line x1="12" y1="9" x2="12" y2="15"/>
         </svg>
         <div class="project-title">BattleBots</div>
         <p class="project-desc">Custom designed and fabricated both the Fairyweight and Antweight classes. 
@@ -424,7 +461,9 @@
 
       <div class="reu-card reveal">
         <svg class="reu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 2 2.7 3 6 3s6-1 6-3v-5"/>
+          <!-- Brain icon for Behavioral Economics -->
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.98-3 2.5 2.5 0 0 1-1.32-4.24 3 3 0 0 1 .34-5.58 2.5 2.5 0 0 1 1.96-3.18A2.5 2.5 0 0 1 9.5 2"/>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.98-3 2.5 2.5 0 0 0 1.32-4.24 3 3 0 0 0-.34-5.58 2.5 2.5 0 0 0-1.96-3.18A2.5 2.5 0 0 0 14.5 2"/>
         </svg>
         <div>
           <div class="reu-title">Behavioral Economics</div>
@@ -446,7 +485,11 @@
 
   <div class="reu-card reveal">
         <svg class="reu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 2 2.7 3 6 3s6-1 6-3v-5"/>
+          <!-- Users/people split icon for Political Polarization -->
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
         <div>
           <div class="reu-title">Political Polarization in America</div>
@@ -457,7 +500,9 @@
 
   <div class="reu-card reveal">
         <svg class="reu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 2 2.7 3 6 3s6-1 6-3v-5"/>
+          <!-- Trending up chart for Market Theory -->
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+          <polyline points="17 6 23 6 23 12"/>
         </svg>
         <div>
           <div class="reu-title">Market Theory</div>
@@ -486,8 +531,10 @@
 
     <a href="https://www.myminifactory.com/users/Big%20Sky%20Robotics?show=store" target="_blank" class="link-card reveal">
         <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          <!-- 3D cube / MMF icon -->
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+          <line x1="12" y1="22.08" x2="12" y2="12"/>
         </svg>
         <span class="link-name">MyMiniFactory</span>
         <span class="link-desc">3D designs, parts, and stuff</span>
@@ -504,8 +551,12 @@
 
     <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6411968" target="_blank" class="link-card reveal">
         <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          <!-- Research paper / SSRN icon -->
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
         </svg>
         <span class="link-name">SSRN</span>
         <span class="link-desc">Research publications</span>
@@ -522,7 +573,7 @@
       </a>
 -->
 
-      <a href="mailto:aedanbingham@gmail.com" class="link-card reveal">
+      <a href="/cdn-cgi/l/email-protection#f0919594919e92999e9798919db0979d91999cde939f9d" class="link-card reveal">
         <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
           <polyline points="22,6 12,13 2,6"/>
@@ -547,11 +598,11 @@
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
