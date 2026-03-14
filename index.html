@@ -214,7 +214,6 @@
     }
     .edu-card:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(57,255,20,0.2); }
 
-    /* Float-based seal for Robotics & Economics cards */
     .edu-seal {
       float: right;
       width: 140px;
@@ -228,7 +227,6 @@
     }
     .edu-card::after { content: ''; display: table; clear: both; }
 
-    /* FIX 1: Flex-based layout for Certifications card — seal on right, vertically centered */
     .edu-card-flex {
       display: flex;
       align-items: center;
@@ -279,7 +277,6 @@
       padding: 0.2rem 0.6rem; border-radius: 20px;
     }
 
-    /* FIX 2: Video styling */
     .project-video {
       width: 100%;
       border-radius: 8px;
@@ -288,6 +285,88 @@
       margin-top: 0.5rem;
     }
 
+   /* GALLERY */
+.gallery-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gallery-track-wrapper {
+  overflow: hidden;
+  flex: 1;
+  border-radius: 12px;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-img {
+  width: calc(25% - 0.75rem);
+  flex-shrink: 0;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255,45,120,0.15);
+  box-shadow: 0 0 15px rgba(255,45,120,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gallery-img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(255,45,120,0.25);
+}
+
+.gallery-btn {
+  background: var(--card);
+  border: 1px solid rgba(255,45,120,0.3);
+  color: var(--neon-pink);
+  font-size: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  line-height: 1;
+}
+
+.gallery-btn:hover {
+  background: rgba(255,45,120,0.1);
+  box-shadow: 0 0 20px rgba(255,45,120,0.3);
+}
+
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.gallery-dot.active {
+  background: var(--neon-pink);
+  box-shadow: 0 0 8px var(--neon-pink);
+}
+
+
+    
     /* Research */
     .reu-list { display: flex; flex-direction: column; gap: 1.25rem; }
 
@@ -330,6 +409,7 @@
       .edu-seal { float: none; width: 100%; height: 160px; margin: 0 0 1rem 0; }
       .edu-card-flex { flex-direction: column; }
       .edu-card-flex .edu-seal-right { width: 100%; height: 160px; }
+      .gallery-img { width: 100%; }
       nav { padding: 1rem; }
       .nav-links { gap: 0.75rem; }
     }
@@ -353,6 +433,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#links">Links</a></li>
     </ul>
   </nav>
@@ -423,7 +504,6 @@
         </div>
       </div>
 
-      <!-- FIX 1: edu-card-flex puts seal on the right, vertically centered -->
       <div class="edu-card reveal edu-card-flex">
         <div class="edu-card-body">
           <svg class="edu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -462,7 +542,6 @@
         <div class="project-tags">
           <span class="tag">Pololu</span><span class="tag">Python</span><span class="tag">Kinematics</span><span class="tag">CAD</span>
         </div>
-        <!-- FIX 2: MOV properly embedded as a <video> element -->
         <video class="project-video" autoplay muted playsinline loop>
           <source src="compressed.mp4" type="video/quicktime" />
           <source src="compressed.mp4" type="video/mp4" />
@@ -501,8 +580,34 @@
     </div>
   </section>
 
+  <!-- PHOTO GALLERY -->
+  <section id="gallery">
+    <h2 class="section-title title-pink">// Gallery</h2>
+
+    <div class="gallery-carousel reveal">
+      <button class="gallery-btn" onclick="slideGallery(-1)">&#8249;</button>
+
+      <div class="gallery-track-wrapper">
+        <div class="gallery-track" id="galleryTrack">
+          <!-- Replace these src values with your actual photo filenames -->
+          <img src="good Romi.jpg"        alt="Romi Robot"    class="gallery-img" />
+          <img src="cbf.png"              alt="CBF Diagram"   class="gallery-img" />
+          <img src="newwpiseal.png"        alt="WPI Seal"      class="gallery-img" />
+          <img src="1714798291673.jpg"     alt="Photo"         class="gallery-img" />
+          <img src="photo5.jpg"            alt="Photo 5"       class="gallery-img" />
+          <img src="photo6.jpg"            alt="Photo 6"       class="gallery-img" />
+          <img src="photo7.jpg"            alt="Photo 7"       class="gallery-img" />
+          <img src="photo8.jpg"            alt="Photo 8"       class="gallery-img" />
+        </div>
+      </div>
+
+      <button class="gallery-btn" onclick="slideGallery(1)">&#8250;</button>
+    </div>
+
+    <div class="gallery-dots" id="galleryDots"></div>
+  </section>
+
   <!-- Research -->
-  <!-- FIX 3: Side Quests card moved inside this section so it's constrained by max-width -->
   <section id="research">
     <h2 class="section-title title-orange">// Research</h2>
     <div class="reu-list">
@@ -641,6 +746,7 @@
   </footer>
 
   <script>
+    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
@@ -651,6 +757,43 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
+
+    // Gallery carousel
+    const track = document.getElementById('galleryTrack');
+    const imgs = track.querySelectorAll('.gallery-img');
+    const dotsContainer = document.getElementById('galleryDots');
+    const visibleCount = window.innerWidth <= 600 ? 1 : 4;
+    const totalSlides = Math.ceil(imgs.length / visibleCount);
+    let currentSlide = 0;
+    let autoTimer;
+
+    // Build dots
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+
+    function goToSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      const imgWidth = imgs[0].offsetWidth + 16; // 16px = gap
+      track.style.transform = `translateX(-${currentSlide * visibleCount * imgWidth}px)`;
+      document.querySelectorAll('.gallery-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+      });
+      resetTimer();
+    }
+
+    function slideGallery(dir) { goToSlide(currentSlide + dir); }
+
+    function resetTimer() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => slideGallery(1), 4000);
+    }
+
+    resetTimer();
   </script>
 </body>
 </html>
