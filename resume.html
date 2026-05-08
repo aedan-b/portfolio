@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aedan Bingham — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0d1a;
+      --card: #1a1a35;
+      --neon-green: #39ff14;
+      --neon-cyan: #00f5ff;
+      --neon-pink: #ff2d78;
+      --neon-yellow: #ffe600;
+      --neon-orange: #ff5f1f;
+      --text: #e8e8ff;
+      --muted: #7a7aaa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 0 3px rgba(0,245,255,0.15), 0 0 60px rgba(0,245,255,0.05) inset;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 4px;
+      border: 1px solid rgba(0,245,255,0.08);
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 9999;
+      box-shadow: 0 0 30px rgba(0,245,255,0.04) inset, 0 0 1px rgba(0,245,255,0.3), inset 0 0 80px rgba(57,255,20,0.02);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,245,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,0.025) 1px, transparent 1px),
+        radial-gradient(ellipse at 0% 0%, rgba(0,245,255,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 0%, rgba(57,255,20,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,45,120,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 0% 100%, rgba(255,95,31,0.06) 0%, transparent 50%),
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 20% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 92% 10%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 30%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.2) 0%, transparent 100%);
+      background-size: 60px 60px, 60px 60px, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
+        auto, auto, auto, auto, auto, auto, auto, auto, auto, auto;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(13,13,26,0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,245,255,0.15);
+    }
+    .nav-logo {
+      font-family: 'Press Start 2P', monospace; font-size: 0.65rem;
+      color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .nav-logo svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--neon-green); }
+
+    /* PAGE */
+    .page { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+
+    /* HEADER */
+    .resume-header { text-align: center; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(0,245,255,0.15); }
+    .resume-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      color: var(--neon-cyan);
+      text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0,245,255,0.3);
+      letter-spacing: 4px; margin-bottom: 0.75rem;
+    }
+    .resume-tagline { font-size: 0.9rem; color: var(--muted); max-width: 620px; margin: 0 auto 1.25rem; line-height: 1.7; font-style: italic; }
+    .resume-contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem; }
+    .resume-contact { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .resume-contact:hover { color: var(--neon-cyan); }
+    .resume-contact svg { width: 0.9rem; height: 0.9rem; flex-shrink: 0; }
+
+    /* SECTION TITLES */
+    .section-title {
+      font-family: 'Press Start 2P', monospace; font-size: clamp(0.6rem, 2vw, 0.8rem);
+      margin-bottom: 1.25rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, currentColor, transparent); opacity: 0.3; }
+    .title-green  { color: var(--neon-green);  text-shadow: 0 0 10px var(--neon-green); }
+    .title-pink   { color: var(--neon-pink);   text-shadow: 0 0 10px var(--neon-pink); }
+    .title-yellow { color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow); }
+    .title-orange { color: var(--neon-orange); text-shadow: 0 0 10px var(--neon-orange); }
+    .title-cyan   { color: var(--neon-cyan);   text-shadow: 0 0 10px var(--neon-cyan); }
+
+    /* LAYOUT */
+    .resume-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .resume-full { margin-bottom: 2rem; }
+
+    /* CARD BASE */
+    .r-card { border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; transition: transform 0.2s, box-shadow 0.2s; }
+
+    /* EDU */
+    .edu-card { background: var(--card); border: 1px solid rgba(57,255,20,0.15); border-left: 4px solid var(--neon-green); }
+    .edu-card:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(57,255,20,0.2); }
+    .edu-degree { font-weight: 800; font-size: 1rem; color: var(--neon-green); margin-bottom: 0.2rem; }
+    .edu-school { font-size: 0.875rem; color: var(--text); margin-bottom: 0.15rem; }
+    .edu-meta   { font-size: 0.78rem; color: var(--muted); }
+
+    /* SKILLS */
+    .skills-group { margin-bottom: 1rem; }
+    .skills-label { font-size: 0.65rem; font-weight: 800; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .skills-tags  { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag { background: rgba(0,245,255,0.07); border: 1px solid rgba(0,245,255,0.2); color: var(--neon-cyan); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.65rem; border-radius: 20px; }
+
+    /* RESEARCH */
+    .research-card { background: var(--card); border: 1px solid rgba(255,95,31,0.2); border-left: 4px solid var(--neon-orange); }
+    .research-card:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(255,95,31,0.3); }
+    .r-title-orange { font-weight: 800; font-size: 1rem; color: var(--neon-orange); margin-bottom: 0.2rem; }
+    .r-meta  { font-size: 0.8rem; color: var(--text); margin-bottom: 0.3rem; }
+    .r-bullets { list-style: none; padding: 0; margin-bottom: 0.5rem; }
+    .r-bullets li { font-size: 0.8rem; color: var(--muted); line-height: 1.6; padding-left: 1rem; position: relative; margin-bottom: 0.2rem; }
+    .r-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--neon-orange); }
+    .r-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .r-link { font-size: 0.75rem; color: var(--neon-orange); text-decoration: none; border-bottom: 1px solid rgba(255,95,31,0.4); transition: color 0.2s, border-color 0.2s; }
+    .r-link:hover { color: #fff; border-color: rgba(255,95,31,0.8); }
+
+    /* EXPERIENCE */
+    .exp-card { background: var(--card); border: 1px solid rgba(255,45,120,0.15); border-left: 4px solid var(--neon-pink); }
+    .exp-card:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(255,45,120,0.2); }
+    .exp-title { font-weight: 800; font-size: 1rem; color: var(--neon-pink); margin-bottom: 0.1rem; }
+    .exp-role  { font-size: 0.85rem; color: var(--text); margin-bottom: 0.1rem; }
+    .exp-meta  { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .exp-bullets { list-style: none; padding: 0; }
+    .exp-bullets li { font-size: 0.8rem; color: var(--muted); line-height: 1.6; padding-left: 1rem; position: relative; margin-bottom: 0.2rem; }
+    .exp-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--neon-pink); }
+
+    /* AWARDS */
+    .awards-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .award-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.6rem 1rem; background: var(--card); border: 1px solid rgba(255,230,0,0.12); border-left: 4px solid var(--neon-yellow); border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+    .award-row:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(255,230,0,0.15); }
+    .award-name { font-weight: 800; font-size: 0.88rem; color: var(--text); }
+    .award-date { font-size: 0.75rem; color: var(--muted); white-space: nowrap; margin-left: 1rem; }
+
+    /* ACTIVITIES */
+    .activities-wrap { background: var(--card); border: 1px solid rgba(0,245,255,0.12); border-left: 4px solid var(--neon-cyan); border-radius: 12px; padding: 1.25rem 1.5rem; }
+    .activity-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .activity-tag { background: rgba(0,245,255,0.07); border: 1px solid rgba(0,245,255,0.2); color: var(--neon-cyan); font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 20px; }
+
+    /* DOWNLOAD BAR */
+    .download-bar { display: flex; gap: 1rem; justify-content: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; border-radius: 6px; font-family: 'Press Start 2P', monospace; font-size: 0.5rem; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none; letter-spacing: 1px; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn svg { width: 0.9rem; height: 0.9rem; flex-shrink: 0; }
+    .btn-primary { background: var(--neon-green); color: #0d0d1a; box-shadow: 0 0 20px rgba(57,255,20,0.4); }
+    .btn-primary:hover { box-shadow: 0 0 35px rgba(57,255,20,0.7); }
+    .btn-outline { background: transparent; color: var(--neon-cyan); border: 2px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0,245,255,0.2); }
+    .btn-outline:hover { box-shadow: 0 0 30px rgba(0,245,255,0.5); }
+
+    /* FOOTER */
+    footer { position: relative; z-index: 1; text-align: center; padding: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); font-size: 0.8rem; margin-top: 1rem; }
+
+    /* PRINT */
+    @media print {
+      nav, .download-bar, footer, body::before, body::after { display: none !important; }
+      body { background: white !important; color: black !important; box-shadow: none !important; border: none !important; }
+      .page { padding: 1rem; }
+      .resume-name { color: #000 !important; text-shadow: none !important; }
+      .resume-tagline, .resume-contact { color: #444 !important; }
+      .section-title { text-shadow: none !important; }
+      .title-green  { color: #006600 !important; }
+      .title-pink   { color: #990033 !important; }
+      .title-orange { color: #cc3300 !important; }
+      .title-yellow { color: #997700 !important; }
+      .title-cyan   { color: #006688 !important; }
+      .r-card, .award-row, .activities-wrap { background: #f9f9f9 !important; box-shadow: none !important; }
+      .edu-degree { color: #006600 !important; }
+      .r-title-orange { color: #cc3300 !important; }
+      .exp-title  { color: #990033 !important; }
+      .r-meta, .exp-meta, .exp-role, .r-bullets li, .exp-bullets li, .award-date { color: #444 !important; }
+      .skill-tag, .activity-tag { background: #eee !important; border-color: #aaa !important; color: #006688 !important; }
+      .r-link { color: #cc3300 !important; }
+      * { text-shadow: none !important; }
+      .resume-cols { gap: 1rem; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .resume-cols { grid-template-columns: 1fr; }
+      nav { padding: 1rem; }
+      .nav-links { gap: 0.75rem; }
+      .award-row { flex-direction: column; gap: 0.2rem; }
+      .award-date { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+        <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+        <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+        <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+        <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+      </svg>
+      Aedan Bingham
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#education">Education</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#links">Links</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="resume-header">
+      <div class="resume-name">AEDAN BINGHAM</div>
+      <p class="resume-tagline">Bridging robotics engineering and economics — combining hands-on autonomous research with macro-level market analysis to approach technical and systemic challenges.</p>
+      <div class="resume-contacts">
+        <a href="tel:4067502588" class="resume-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.12 14.91a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          406-750-2588
+        </a>
+        <a href="mailto:ajbingham1@wpi.edu" class="resume-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          ajbingham1@wpi.edu
+        </a>
+        <a href="https://linkedin.com/in/aedan-bingham" target="_blank" rel="noopener" class="resume-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6411968" target="_blank" rel="noopener" class="resume-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          SSRN
+        </a>
+        <a href="index.html" class="resume-contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Personal Website
+        </a>
+      </div>
+    </div>
+
+    <!-- TWO-COLUMN: Education + Skills | Research & Projects -->
+    <div class="resume-cols">
+
+      <!-- LEFT: Education + Skills -->
+      <div>
+        <h2 class="section-title title-green">// Education</h2>
+
+        <div class="r-card edu-card">
+          <div class="edu-degree">Double Major: Robotics Engineering &amp; Economics</div>
+          <div class="edu-school">Worcester Polytechnic Institute — Worcester, MA</div>
+          <div class="edu-meta">Candidate for B.S. &nbsp;·&nbsp; Expected December 2027</div>
+        </div>
+
+        <h2 class="section-title title-cyan" style="margin-top:1.75rem;">// Skills</h2>
+
+        <div class="skills-group">
+          <div class="skills-label">Software &amp; Tools</div>
+          <div class="skills-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">MATLAB</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Fusion 360</span>
+            <span class="skill-tag">SolidWorks</span>
+            <span class="skill-tag">AutoCAD</span>
+            <span class="skill-tag">OpenMV</span>
+            <span class="skill-tag">Arduino</span>
+            <span class="skill-tag">Cura</span>
+            <span class="skill-tag">Canva</span>
+            <span class="skill-tag">Microsoft 365</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-label">Fabrication &amp; Hardware</div>
+          <div class="skills-tags">
+            <span class="skill-tag">Advanced Fabrication</span>
+            <span class="skill-tag">Soldering</span>
+            <span class="skill-tag">3D Printing</span>
+            <span class="skill-tag">Circuitry</span>
+            <span class="skill-tag">FEA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Research & Projects -->
+      <div>
+        <h2 class="section-title title-orange">// Research &amp; Projects</h2>
+
+        <div class="r-card research-card">
+          <div class="r-title-orange">Perception and Autonomous Robotics Lab (PeAR)</div>
+          <div class="r-meta">2026 – Present &nbsp;·&nbsp; WPI</div>
+          <ul class="r-bullets">
+            <li>Rapid prototyping cycles of organic quadcopter and flying wing research platforms</li>
+            <li>Improved real-time sensory perception and data processing efficiency on resource-constrained microcontrollers</li>
+          </ul>
+        </div>
+
+        <div class="r-card research-card">
+          <div class="r-title-orange">Behavioral Finance Research</div>
+          <div class="r-meta">2024 – Present &nbsp;·&nbsp; WPI &nbsp;·&nbsp; Advisee: Alexander Smith, Ph.D., Economics</div>
+          <ul class="r-bullets">
+            <li>Analytical research uncovering key themes, misconceptions, and psychological biases in financial behavior and literacy, using original survey data from 200 anonymous WPI students</li>
+          </ul>
+          <div class="r-links">
+            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5245648" target="_blank" rel="noopener" class="r-link">Paper — What WPI Students Know about Personal Finance</a>
+          </div>
+        </div>
+
+        <div class="r-card research-card">
+          <div class="r-title-orange">Educational Platform</div>
+          <div class="r-meta">2023 – 2025</div>
+          <ul class="r-bullets">
+            <li>Created an innovative website providing research tools, study resources, and course materials for 400+ users</li>
+          </ul>
+        </div>
+
+        <div class="r-card research-card">
+          <div class="r-title-orange">Financial Market Research</div>
+          <div class="r-meta">2023 – 2024 &nbsp;·&nbsp; CMR HS &nbsp;·&nbsp; Business Professionals of America</div>
+          <ul class="r-bullets">
+            <li>Co-authored with John Beurer, B.S. — analyzes structural shifts in economies and markets during the Information and Easy Money Ages. Competed nationally in Billings, Great Falls, and Chicago.</li>
+          </ul>
+          <div class="r-links">
+            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4833829" target="_blank" rel="noopener" class="r-link">Paper — The 21st Century's Ubiquitous Market Transition</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FULL: Experience -->
+    <div class="resume-full">
+      <h2 class="section-title title-pink">// Experience</h2>
+
+      <div class="r-card exp-card">
+        <div class="exp-title">Grill &amp; Green</div>
+        <div class="exp-role">Front-of-House Associate, Client Relations and Beverage Specialist</div>
+        <div class="exp-meta">Worcester, MA &nbsp;·&nbsp; 2025 – 2026</div>
+        <ul class="exp-bullets">
+          <li>Delivering dynamic, customer-focused service in a fast-paced, health-oriented café, serving 300+ patrons daily</li>
+        </ul>
+      </div>
+
+      <div class="r-card exp-card">
+        <div class="exp-title">TurnUP Activism</div>
+        <div class="exp-role">Intern — Evaluative Research and Report Write-Ups</div>
+        <div class="exp-meta">Cambridge, MA &nbsp;·&nbsp; Summer 2024</div>
+        <ul class="exp-bullets">
+          <li>Researched and presented on the Rule of Law, Political Imprisonment, Justice, and Environmental Realism</li>
+          <li>Teamwork resulted in the registration of 290,000 young voters</li>
+        </ul>
+      </div>
+
+      <div class="r-card exp-card">
+        <div class="exp-title">Stockman Insurance</div>
+        <div class="exp-role">Account Executive — Optimizing Claims and Accounts</div>
+        <div class="exp-meta">Great Falls, MT &nbsp;·&nbsp; Summer 2024</div>
+        <ul class="exp-bullets">
+          <li>Highly collaborative three-person team; utilized Applied Epic and communication expertise to perfect client management and resource allocation</li>
+          <li>Increased client volume and expanded Stockman's Central Montana operating region</li>
+        </ul>
+      </div>
+
+      <div class="r-card exp-card">
+        <div class="exp-title">Meadow Lark Country Club</div>
+        <div class="exp-role">Tennis Center Operations — Court Management</div>
+        <div class="exp-meta">Great Falls, MT &nbsp;·&nbsp; 2022 – 2024</div>
+        <ul class="exp-bullets">
+          <li>Enhanced player retention rate and court operations with an emphasis on building customer relationships</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Achievements + Activities side by side -->
+    <div class="resume-cols" style="margin-bottom:2rem;">
+      <div>
+        <h2 class="section-title title-yellow">// Achievements</h2>
+        <div class="awards-list">
+          <div class="award-row">
+            <span class="award-name">Charles O. Thompson Scholar</span>
+            <span class="award-date">WPI &nbsp;·&nbsp; 2026</span>
+          </div>
+          <div class="award-row">
+            <span class="award-name">Dean's List</span>
+            <span class="award-date">WPI &nbsp;·&nbsp; 2024, 2025, 2026</span>
+          </div>
+          <div class="award-row">
+            <span class="award-name">Golden Flame Finalist — Top 1% of Graduates</span>
+            <span class="award-date">CMR HS &nbsp;·&nbsp; 2024</span>
+          </div>
+          <div class="award-row">
+            <span class="award-name">Promoting Excellence in Education Scholar</span>
+            <span class="award-date">CMR HS &nbsp;·&nbsp; 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title title-cyan">// Activities &amp; Volunteerism</h2>
+        <div class="activities-wrap">
+          <div class="activity-tags">
+            <span class="activity-tag">Tau Beta Pi Honorary Society</span>
+            <span class="activity-tag">Sigma Pi Fraternity</span>
+            <span class="activity-tag">Investing Association</span>
+            <span class="activity-tag">Meals on Wheels America</span>
+            <span class="activity-tag">WPI Club Tennis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOWNLOAD BAR -->
+    <div class="download-bar">
+      <a href="Aedan_Bingham_Resume.pdf" download class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+      <button onclick="window.print()" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print
+      </button>
+      <a href="index.html" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Portfolio
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    Built with <span style="color:var(--neon-pink);">♥</span> and lots of matrices — © 2026 — Aedan Bingham
+  </footer>
+
+</body>
+</html>
