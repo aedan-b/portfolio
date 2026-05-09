@@ -72,8 +72,8 @@
       z-index: 0;
     }
 
-    /*  */
-     {
+    /* NAV */
+    nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
@@ -85,8 +85,8 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(0,245,255,0.15);
     }
-
-    .-logo {
+    
+    .nav-logo {
       font-family: 'Press Start 2P', monospace;
       font-size: 0.65rem;
       color: var(--neon-cyan);
@@ -96,11 +96,11 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .-logo svg { width: 1rem; height: 1rem; flex-shrink: 0; }
-
-    .-links { display: flex; gap: 1.5rem; list-style: none; }
-    .-links a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: color 0.2s; }
-    .-links a:hover { color: var(--neon-green); }
+    .nav-logo svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+    
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--neon-green); }
 
     /* HERO */
     .hero {
@@ -410,14 +410,14 @@
       .edu-card-flex { flex-direction: column; }
       .edu-card-flex .edu-seal-right { width: 100%; height: 160px; }
       .gallery-img { width: 100%; }
-       { padding: 1rem; }
-      .-links { gap: 0.75rem; }
+      nav { padding: 1rem; }         /* was blank */
+      .nav-links { gap: 0.75rem; }  /* was .-links */
     }
   </style>
 </head>
 <body>
 
-  <!--  -->
+  <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -450,7 +450,7 @@
       <line x1="7" y1="21" x2="7" y2="23"/><line x1="17" y1="21" x2="17" y2="23"/>
     </svg>
     <h1>Hi, I'm Aedan Bingham!</h1>
-    <p class="subtitle">Robotings Engineering & Economics student at WPI — building things that drive, fly, and predict!</p>
+    <p class="subtitle">Robotics Engineering & Economics student at WPI — building things that drive, fly, and predict!</p>
    <div class="hero-btns">
     <a href="#projects" class="btn btn-primary">See My Projects</a>
     <a href="#links" class="btn btn-outline">Get In Touch</a>
