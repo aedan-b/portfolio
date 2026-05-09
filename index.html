@@ -537,12 +537,12 @@
       <div class="project-card reveal">
         <img src="good Romi.jpg" alt="Package Transport Romi robot with scissor lift and gripper" style="width:100%; height:300px; object-fit:cover; object-position:center top; border-radius:8px; margin-bottom:1rem;" />
         <div class="project-title">Package Transport Romi</div>
-        <p class="project-desc">A Romi chassis and homemade 3-DOF manipulator with 1 mm precision.
+        <p class="project-desc">A Romi chassis with 1 mm precision and homemade 3-DOF manipulator.
           Mechanically, a scissor lift is used for z-axis control, a rack and pinion for the y-axis, and gripper in the x-axis.
           The software is integrated with forward and inverse kinematics.
-          On the ECE side, a simple breadboard setup is implemented with a buck converter to handle three servos.</p>
+          On the ECE side, a breadboard setup with a buck converter powering three servos.</p>
         <div class="project-tags">
-          <span class="tag">Pololu</span><span class="tag">Python</span><span class="tag">Kinematics</span><span class="tag">CAD</span>
+          <span class="tag">Pololu</span><span class="tag">C++</span><span class="tag">Inverse kinematics</span><span class="tag">Servo control</span><span class="tag">CAD</span>
         </div>
         <video class="project-video" autoplay muted playsinline loop>
           <source src="compressed.mp4" type="video/quicktime" />
@@ -562,7 +562,8 @@
         <div class="project-title">Sensor Platform Romi</div>
         <p class="project-desc">Various sensing and perception systems deployed on a Romi chassis.
         Autonomous gridspace navigation, line following, dead reckoning, AprilTag following, and teleoperation control.
-        Multiple types of sensors implemented and fused. For example, distance travelled readings based off encoder counts
+        Multiple types of sensors implemented and fused.</p>
+        <p class="project-desc">For example, distance travelled readings based off encoder counts
         and ultrasonic readings to improve destination accuracy on low-friction surfaces. As well, driving to points in space 
         and location an AprilTag on a bin, then picking up and weighing that bin to within 0.5g (\omega = 0.055 g), and lastly
         driving to another set location to drop the bin off.</p>
