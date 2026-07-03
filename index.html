@@ -15,6 +15,7 @@
       --neon-yellow: #ffe600;
       --neon-orange: #ff5f1f;     
       --neon-red: #ff3131;
+      --neon-purple: #b967ff;
       --text: #e8e8ff;
       --muted: #7a7aaa;
     }
@@ -183,6 +184,7 @@
     .title-yellow { color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow); }
     .title-orange { color: var(--neon-orange); text-shadow: 0 0 10px var(--neon-orange); }
     .title-cyan   { color: var(--neon-cyan);   text-shadow: 0 0 10px var(--neon-cyan); }
+    .title-explore { color: var(--neon-purple); text-shadow: 0 0 10px var(--neon-purple); }
 
     /* ABOUT */
     .about-card {
@@ -285,6 +287,46 @@
       box-shadow: 0 0 20px rgba(255,45,120,0.2);
       margin-top: 0.5rem;
     }
+
+    /* EXPLORATORY PROJECTS */
+    .explore-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .explore-card {
+      background: var(--card); border: 1px solid rgba(185,103,255,0.2); border-radius: 16px;
+      padding: 1.75rem; transition: box-shadow 0.2s; position: relative; overflow: hidden;
+    }
+    .explore-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+    }
+    .explore-card:hover { box-shadow: 0 12px 30px rgba(185,103,255,0.18); }
+    .explore-title { font-weight: 800; font-size: 1.15rem; color: var(--neon-purple); margin-bottom: 0.5rem; }
+    .explore-desc  { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+
+    .explore-map-wrap {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(185,103,255,0.25);
+      box-shadow: 0 0 25px rgba(185,103,255,0.12);
+      margin-bottom: 1.25rem;
+    }
+    .explore-map {
+      width: 100%;
+      height: 520px;
+      border: none;
+      display: block;
+      background: #10101f;
+    }
+
+    .explore-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .explore-link-btn {
+      display: inline-flex; align-items: center;
+      color: var(--neon-purple); text-decoration: none; font-weight: 700; font-size: 0.8rem;
+      border: 1px solid rgba(185,103,255,0.4); border-radius: 20px;
+      padding: 0.4rem 0.9rem; transition: box-shadow 0.2s, background 0.2s;
+    }
+    .explore-link-btn:hover { box-shadow: 0 0 14px rgba(185,103,255,0.5); background: rgba(185,103,255,0.08); }
 
    /* GALLERY */
 .gallery-carousel {
@@ -411,6 +453,7 @@
       .edu-card-flex { flex-direction: column; }
       .edu-card-flex .edu-seal-right { width: 100%; height: 160px; }
       .gallery-img { width: 100%; }
+      .explore-map { height: 380px; }
       nav { padding: 1rem; }         /* was blank */
       .nav-links { gap: 0.75rem; }  /* was .-links */
     }
@@ -435,6 +478,7 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#research">Research</a></li>
+      <li><a href="#exploratory">Exploratory</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#links">Links</a></li>
       <li><a href="resume.html">Resume</a></li>
@@ -631,6 +675,44 @@
           This is why CBFs are best used as a substitute or compliment to MPC.</p>
         <div class="project-tags">
           <span class="tag">Modeling</span><span class="tag">Mathematical Algorithms</span><span class="tag">Safety Theory</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPLORATORY PROJECTS -->
+  <section id="exploratory">
+    <h2 class="section-title title-explore">// Exploratory Projects</h2>
+    <div class="explore-grid">
+
+      <div class="explore-card reveal">
+        <div class="explore-title">Mapping the Gulag Archipelago</div>
+        <p class="explore-desc">An open-source, interactive map plotting 69 verified Soviet gulag camps, paired with companion pages on the history of the gulag system, Solzhenitsyn's <em>The Gulag Archipelago</em>, and the system's lessons and legacy.</p>
+        <div class="project-tags">
+          <span class="tag">Interactive Mapping</span><span class="tag">Historical Research</span><span class="tag">Open Database</span><span class="tag">Web Dev</span>
+        </div>
+
+        <div class="explore-map-wrap">
+          <iframe
+            class="explore-map"
+            src="https://aedan-b.github.io/MappingTheGulagArchipelago/index.html"
+            title="Mapping the Gulag Archipelago - interactive map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="explore-links">
+          <a href="https://aedan-b.github.io/MappingTheGulagArchipelago/index.html" target="_blank" class="explore-link-btn">Open Full Map ↗</a>
+          <a href="https://aedan-b.github.io/MappingTheGulagArchipelago/history-of-the-gulag.html" target="_blank" class="explore-link-btn">History of the Gulag ↗</a>
+          <a href="https://aedan-b.github.io/MappingTheGulagArchipelago/solzhenitsyn-archipelago.html" target="_blank" class="explore-link-btn">Solzhenitsyn's Archipelago ↗</a>
+          <a href="https://aedan-b.github.io/MappingTheGulagArchipelago/lessons-and-legacy.html" target="_blank" class="explore-link-btn">Lessons and Legacy ↗</a>
+          <a href="https://github.com/aedan-b/MappingTheGulagArchipelago/tree/main" target="_blank" class="explore-link-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px; margin-right:0.3rem;">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>Repository
+          </a>
         </div>
       </div>
 
